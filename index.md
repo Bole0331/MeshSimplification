@@ -16,8 +16,10 @@
 - Code: We will use C++, Cuda and OpenMP Library for this Project. And there is no start code for us, we will build the whole project on our own.
 - Platforms: We will run our project on Mac Pro Laptop, Xeon Phi and Latedays Cluster.
 - Papers:
-+ Surface Simpliﬁcation Using Quadric Error Metrics
-+ A Simple, Fast, and Effective Polygon Reduction Algorithm
+  + [Surface Simpliﬁcation Using Quadric Error Metrics](https://people.eecs.berkeley.edu/~jrs/meshpapers/GarlandHeckbert2.pdf)
+  + [A Simple, Fast, and Effective Polygon Reduction Algorithm](http://pds26.egloos.com/pds/201402/12/11/gdmag.pdf)
+  + OpenMP Tutorial
+  + Cuda Tutorial
 
 ## Goals and Deliverables
 
