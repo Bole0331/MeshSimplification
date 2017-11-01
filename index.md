@@ -1,18 +1,18 @@
-## Parallelize two Mesh Simplification Algorithms with Cuda and OpenMP
+# Parallelize two Mesh Simplification Algorithms with Cuda and OpenMP
 
 - Bole Chen (bolec@andrew.cmu.edu)
 - Haixin Liu (haixinl@andrew.cmu.edu)
 
-### Summary
+## Summary
 
-### Background
+## Background
 
-### The challenge
+## The challenge
 
-### Resources
+## Resources
 
-### Goals and Deliverables
+## Goals and Deliverables
 
-### Platform choice 
+## Platform choice 
 
-### Schedule
+## Schedule
