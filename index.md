@@ -13,11 +13,14 @@
 
 ## Resources
 
-- Code: We will use C++, Cuda and OpenMP Library for this Project. And there is no start code for us, we will build the whole project on our own.
+- Languages: We will use C++, Cuda and OpenMP library for this Project. 
+- Code Base: There is no start code for us, we will build the whole project on our own.
 - Platforms: We will run our project on Mac Pro Laptop, Xeon Phi and Latedays Cluster.
 - Papers:
   + [Surface Simpliﬁcation Using Quadric Error Metrics](https://people.eecs.berkeley.edu/~jrs/meshpapers/GarlandHeckbert2.pdf)
   + [A Simple, Fast, and Effective Polygon Reduction Algorithm](http://pds26.egloos.com/pds/201402/12/11/gdmag.pdf)
+  + [Mesh simplification in parallel](https://pdfs.semanticscholar.org/ee52/0300bcbfcd768943d1734357d507c9e6b4d0.pdf)
+  + [Real-time mesh simplification using the GPU](https://dl.acm.org/citation.cfm?id=1230128)
   + OpenMP Tutorial
   + Cuda Tutorial
 
