@@ -26,6 +26,10 @@
 
 ## Goals and Deliverables
 
+<p align="justify">&emsp;&emsp;Our minimum goal for this project is to implement the parallel version mesh simplification algorithm with Cuda and OpenMP. Right now for a object that consists with millions of patches, it takes really a long time to run the serial version mesh simplification algorithm, which is intolerable. Hence for our parallel version implementationm, we want to show in the poster session that it can finish in seconds.</p>
+
+<p align="justify">&emsp;&emsp;We will implement two different mesh simplification algorithms and parallelize them with Cuda and OpenMP. So we will compare the performance of differnt combinations. The problems itself is a graphic problem, so we believe Cuda could be a ideal fit for this mesh simplification problem. We will do a lot of experiments and analyses work to compare these two parallel model to understand deeply why one performs better than the other one. </p>
+
 ## Platform choice 
 
 ## Schedule
