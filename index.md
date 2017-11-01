@@ -30,9 +30,9 @@
 
 ## Schedule
 
-- Week 1 (by 11/5):  &emsp;Read related works, understand two algorithms.
-- Week 2 (by 11/12): &emsp;Implement two mesh simplification algorithms in serial version.
-- Week 3 (by 11/19): &emsp;Optimize serial version code and parallelize these two algorithms with Cuda.
-- Week 4 (by 11/26): &emsp;Parallelize algorithms with Cuda and OpenMP.
-- Week 5 (by 12/3):  &emsp;Parallelize algorithms with OpenMP and do experiments.
-- Week 6 (by 12/10): &emsp;Do experiments and work on final report.
+- Week 1 (by 11/5):  Read related works, understand two algorithms.
+- Week 2 (by 11/12): Implement two mesh simplification algorithms in serial version.
+- Week 3 (by 11/19): Optimize serial version code and parallelize these two algorithms with Cuda.
+- Week 4 (by 11/26): Parallelize algorithms with Cuda and OpenMP.
+- Week 5 (by 12/3):  Parallelize algorithms with OpenMP and do experiments.
+- Week 6 (by 12/10): Do experiments and work on final report.
