@@ -9,7 +9,15 @@
 
 ## Background
 
+Computer graphics processing typically requires many different levels of model detail. In general, the higher the level of detail is, the more computational cost is needed. Depends on various applications, the necessary level of detail may vary significantly. The mesh simplification algorithm can be used to produce high quality model approximations and reduce processing time.
+
+One surface simplification algorithm that we are specially interested in is using quadric error metrics. This algorithm focuses on polygonal models, which only consists of triangles. The main idea of this algorithm is based on iterative contraction of vertex pairs, which is a generalizaiton of edge contraction. The main advantages of this algorithm are improved efficiency, quality and generality. Our work will be using this as serial version algorithm, and expoiting intrinsic parallelism of graphic processing.
+
 ## The challenge
+
+Although the parallelism is intrinsic for graphics processing, serveral challenges also present in efficient implementation.
+- Workload: This algorithm is iterative, and each iteration of execution is dependent on the last one. For CUDA and OpenMP, communication may not be a major problem, but synchronization with locks may be a source of inefficiency.
+- Constraints: Since the algorithm operates on vertices and edges of mesh, simply distribute work based on pixels may not work. It is also hard to deal with shared vertices and edges across partitions. The layout of data need to be well organized to make use of locality.
 
 ## Resources
 
@@ -31,6 +39,10 @@
 <p align="justify">&emsp;&emsp;We will implement two different mesh simplification algorithms and parallelize them with Cuda and OpenMP. So we will compare the performance of differnt combinations. The problems itself is a graphic problem, so we believe Cuda could be a ideal fit for this mesh simplification problem. We will do a lot of experiments and analyses work to compare these two parallel model to understand deeply why one performs better than the other one. </p>
 
 ## Platform choice 
+
+For computer graphics processing, GPU is an ideal platform since it is initially designed to accelerate the creation of images.
+Graphic processing based on mesh models have been working well with GPUs.
+OpenMP is a shared address space framework which utilizes parallelism of single node, and is suitable for single output device on the same node.
 
 ## Schedule
 
