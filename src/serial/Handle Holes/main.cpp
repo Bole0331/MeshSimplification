@@ -166,6 +166,7 @@ int main(int argc, char * argv[]){
 	freopen(argv[1], "r", stdin);
 	freopen(argv[2], "w", stdout);
 	readFile();
+	fprintf(stderr, "Reading file finished\n");
 	prepare();
 	times = v.size() * (1.0 - atof(argv[3]));
 	// for hole correctness

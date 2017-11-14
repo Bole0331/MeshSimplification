@@ -5,6 +5,8 @@
 #include <set>
 #include <queue>
 #include <map>
+#include <sys/time.h>
+#include <sys/resource.h>
 #include "point.h"
 
 #define next nxt
@@ -99,7 +101,7 @@ int merge() {
 		next[w].erase(b);
 	}
 	update(k); 
-	for (map<int, int>::iterator i = next[k].begin(); i != next[k].end(); i++)
+	for (map<int, int>::iterator i = next[k].begin(); i != next[k].end(); i++) 
 		if (i->first >= 0) update(i->first);
 	return 1;
 }
@@ -144,6 +146,7 @@ int main(int argc, char * argv[]){
 	freopen(argv[1], "r", stdin);
 	freopen(argv[2], "w", stdout);
 	readFile();
+	fprintf(stderr, "Reading file finished\n");
 	prepare();
 	times = v.size() * (1.0 - atof(argv[3]));
 	int num = 0;
