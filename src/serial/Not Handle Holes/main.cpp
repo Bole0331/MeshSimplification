@@ -39,8 +39,7 @@ double value(int a, int b){
 	point mid = (v[a] + v[b]) / 2.0;
 	double res = 0;
 	for (map<int, int>::iterator j = next[a].begin(); j != next[a].end(); j ++) 
-		if (j->first >= 0 && j->second >= 0) 
-			res += error(v[a], v[j->first], v[j->second], mid);
+		res += error(v[a], v[j->first], v[j->second], mid);
 	return res;
 }
 
@@ -78,12 +77,7 @@ int merge() {
 	ok.push_back(true); 
 	ok[a] = ok[b] = false; 
 	next.push_back(next[a]);
-	int l = -1, r = next[a][b];
-	for (map<int, int>::iterator i = next[a].begin(); i != next[a].end(); i++) 
-		if (i->second == b) {
-			l = i->first; 
-			break;
-		}
+	int l = next[b][a], r = next[a][b];
 	next[k].erase(b);
 	int t = l;
 	while (t != r) {
