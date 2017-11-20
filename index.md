@@ -1,23 +1,25 @@
-# Parallelize two Mesh Simplification Algorithms with Cuda and OpenMP
+# Parallelize Mesh Simplification Algorithm with Pthread and OpenMP
 
 - Bole Chen (bolec@andrew.cmu.edu)
 - Haixin Liu (haixinl@andrew.cmu.edu)
 
+## [CheckPoint](./checkpoint)
+
 ## Summary
 
-<p align="justify">&emsp;&emsp;Surface mesh simplification is the process of reducing the number of faces used in a surface mesh while keeping the overall shape, volume and boundaries preserved as much as possible. There are lots of mesh simplification algorithms, and all of them are iterative, greedy algorithms that might cost really long time. For this project we will implement two of the mesh simplification algorithms "Quadric Error Metrics" and "Simple, Fast, and Effective Polygon Reduction Algorithm". We see some spaces for both the algorithms to speedup in parallel. So we will parallelize these two algorithms with Cuda and OpenMP to see how much speedup we can gain.</p> 
+<p align="justify">&emsp;&emsp;Surface mesh simplification is the process of reducing the number of faces used in a surface mesh while keeping the overall shape, volume and boundaries preserved as much as possible. There are lots of mesh simplification algorithms, and all of them are iterative, greedy algorithms that might cost really long time. For this project we will implement two of the mesh simplification algorithms "Quadric Error Metrics" and "Simple, Fast, and Effective Polygon Reduction Algorithm". We see some potential spaces for both the algorithms to speedup in parallel. So we will parallelize these two algorithms with Cuda and OpenMP to see how much speedup we can gain.</p> 
 
 ## Background
 
-Computer graphics processing typically requires many different levels of model detail. In general, the higher the level of detail is, the more computational cost is needed. Depends on various applications, the necessary level of detail may vary significantly. The mesh simplification algorithm can be used to produce high quality model approximations and reduce processing time.
+<p align="justify">&emsp;&emsp;Computer graphics processing typically requires many different levels of model detail. In general, the higher the level of detail is, the more computational cost is needed. Depends on various applications, the necessary level of detail may vary significantly. The mesh simplification algorithm can be used to produce high quality model approximations and reduce processing time.</p>
 
-One surface simplification algorithm that we are specially interested in is using quadric error metrics. This algorithm focuses on polygonal models, which only consists of triangles. The main idea of this algorithm is based on iterative contraction of vertex pairs, which is a generalizaiton of edge contraction. The main advantages of this algorithm are improved efficiency, quality and generality. Our work will be using this as serial version algorithm, and expoiting intrinsic parallelism of graphic processing.
+<p align="justify">&emsp;&emsp;One surface simplification algorithm that we are specially interested in is using quadric error metrics. This algorithm focuses on polygonal models, which only consists of triangles. The main idea of this algorithm is based on iterative contraction of vertex pairs, which is a generalizaiton of edge contraction. The main advantages of this algorithm are improved efficiency, quality and generality. Our work will be using this as serial version algorithm, and expoiting intrinsic parallelism of graphic processing.</p>
 
 ## The challenge
 
-Although the parallelism is intrinsic for graphics processing, serveral challenges also present in efficient implementation.
+<p align="justify">&emsp;&emsp;Although the parallelism is intrinsic for graphics processing, serveral challenges also present in efficient implementation.
 - Workload: This algorithm is iterative, and each iteration of execution is dependent on the last one. For CUDA and OpenMP, communication may not be a major problem, but synchronization with locks may be a source of inefficiency.
-- Constraints: Since the algorithm operates on vertices and edges of mesh, simply distribute work based on pixels may not work. It is also hard to deal with shared vertices and edges across partitions. The layout of data need to be well organized to make use of locality.
+- Constraints: Since the algorithm operates on vertices and edges of mesh, simply distribute work based on pixels may not work. It is also hard to deal with shared vertices and edges across partitions. The layout of data need to be well organized to make use of locality.</p>
 
 ## Resources
 
@@ -40,9 +42,9 @@ Although the parallelism is intrinsic for graphics processing, serveral challeng
 
 ## Platform choice 
 
-For computer graphics processing, GPU is an ideal platform since it is initially designed to accelerate the creation of images.
-Graphic processing based on mesh models have been working well with GPUs.
-OpenMP is a shared address space framework which utilizes parallelism of single node, and is suitable for single output device on the same node.
+- For computer graphics processing, GPU is an ideal platform since it is initially designed to accelerate the creation of images.
+- Graphic processing based on mesh models have been working well with GPUs.
+- OpenMP is a shared address space framework which utilizes parallelism of single node, and is suitable for single output device on the same node.
 
 ## Schedule
 
