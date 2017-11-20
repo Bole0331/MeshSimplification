@@ -3,7 +3,7 @@
 - Bole Chen (bolec@andrew.cmu.edu)
 - Haixin Liu (haixinl@andrew.cmu.edu)
 
-## [CheckPoint](./checkpoint.md)
+## [CheckPoint](./checkpoint)
 
 ## Summary
 
