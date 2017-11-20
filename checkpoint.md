@@ -18,9 +18,9 @@
 
 - Stanford Bunny: 35,292 vertices, 70,580 triangles
 
-  | Ratio | Running time | Percentage of Parallel | Concurrent tasks number | pic                     |
-  | :---: | :----------: | :--------------------: | :---------------------: | :---------------------: |
-  | 0.9   | 0.812760s    | 59.2863%               | 7.417115                | ![](image/Bunny0_9.png) |
+  | Ratio | Running time | Percentage of Parallel | Concurrent tasks number |  pic  |
+  | :---: | :----------: | :--------------------: | :---------------------: | :---: |
+  | 0.9   | 0.812760s    | 59.2863%               | 7.417115                | ![](image/Bunny0_9.png) =100x100)|
   | 0.5   | 3.792154s    | 62.8117%               | 7.233311                |                         | 
   | 0.1   | 7.730236s    | 53.5701%               | 7.134595                |                         |
   | 0.01  | 8.696549s    | 52.3328%               | 7.115745                |                         |
