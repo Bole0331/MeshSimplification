@@ -13,7 +13,8 @@
 - Find potential parallel parts in the serial version algorithm, and parallized those parts with OpenMP and PThread.
 - Designed the new parallel version algorithm. Trying to parallize our new mesh simplification algorithm in a multiple task queue model.
 
-## preliminary results
+## Preliminary results
+<p align="justify">&emsp;&emsp;In this section, we show our benchmark on our new serial version algorithm. We show the running time, the percentage of the potential parallel parts in the serial algorithm and how many idpedendent tasks we can generate to parallize for the algorithm for models of different size and with different simplification ratio.
 
 ## Current Issues
 
