@@ -32,5 +32,12 @@
 ## Current Issues
 
 ## First try to parallelism
+<p align="justify">&emsp;&emsp; Our first try to parallelize the problem is to identify the independent loops within the serial algorithm. These loops can be distributed to many workers in a shared address space fashion. Common implementations include OpenMp and Pthread library. We implemented this parallel algorithm in both of these two ways.</p>
+<p align="justify">&emsp;&emsp;The first step is to benchmark the serial algorithm and find out the time-consuming independent loops. Unfortunately, this mesh simplification algorithm is highly serial, since each modification is based on the previous one. Finally we found a loop within one modification, which updates all neighbor vertices of a merged vertex.</p>
+<p align="justify">&emsp;&emsp;We firstly implemented the parallel program with Pthreads, and tested it on Macbook Pro machine. However, we observed a slow down of the running time instead of speedup. We then tested it on 8-core AWS machine, and got the similar results. We found out 3 reasons why this approach does not work:</p>
+- 1. In each iteration of this loop, a shared queue is maintained. The concurrent update of this queue need to be protected by lock (or atomic operations).
+- 2. The task for each worker thread is not computation intensive. It only involes a few calculations, and then updates the shared data structure.
+- 3. The overhead of creating/destroying threads.
+<p align="justify">&emsp;&emsp;To overcome these issues, we tried many ways to optimize it. We keep buffer to accumulate local updates, and try to use as few locks as possible. We maintain a pool of threads to avoid creating threads on the fly. However, the improvement is not satisfying. This situation is similar for OpenMP implementation.</p>
 
 ## Way to final parallelism
