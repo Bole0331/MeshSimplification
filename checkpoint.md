@@ -25,7 +25,14 @@
   | 0.1   | 7.730236s    | 53.5701%               | 7.134595                | ![](image/Bunny0_1.png) |
   | 0.01  | 8.696549s    | 52.3328%               | 7.115745                | ![](image/Bunny1_1.png) |
   
-- Stanford Dragon: 104,855 vertices, 209,227 triangles
+- Stanford Dragon: 54,855 vertices, 109,227 triangles
+
+  | Ratio | Running time | Percentage of Parallel | Concurrent tasks number | picture                  |
+  | :---: | :----------: | :--------------------: | :---------------------: | :----------------------: |
+  | 0.9   | 1.122375s    | 57.2763%               | 6.571914                | ![](image/Dragon0_9.png) |
+  | 0.5   | 4.979142s    | 65.2532%               | 6.852200                | ![](image/Dragon0_5.png) |
+  | 0.1   | 10.64453s    | 53.8220%               | 6.873644                | ![](image/Dragon0_1.png) |
+  | 0.01  | 12.40377s    | 52.6605%               | 6.874545                | ![](image/Dragon1_1.png) |
 
 - Stanford Lucy: 1,002,540 vertices, 2,005,076 triangles
 
