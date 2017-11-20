@@ -43,6 +43,7 @@
   | 0.2   | 227.477330s  | 48.4608%               | 7.060837                | ![](image/Lucy0_2.png) |
   | 0.1   | 277.754340s  | 44.7244%               | 7.050373                | ![](image/Lucy0_1.png) |
   | 0.01  | 319.221629s  | 45.2114%               | 7.039001                | ![](image/Lucy1_1.png) |
+  | 0.001 | 331.384197s  | 43.2649%               | 7.037734                | ![](image/Lucy2_1.png) |
   
 
 ## Current Issues
@@ -52,12 +53,13 @@
 <p align="justify">&emsp;&emsp;The first step is to benchmark the serial algorithm and find out the time-consuming independent loops. Unfortunately, this mesh simplification algorithm is highly serial, since each modification is based on the previous one. Finally we found a loop within one modification, which updates all neighbor vertices of a merged vertex.</p>
 <p align="justify">&emsp;&emsp;We firstly implemented the parallel program with Pthreads, and tested it on Macbook Pro machine. However, we observed a slow down of the running time instead of speedup. We then tested it on 8-core AWS machine, and got the similar results. We found out 3 reasons why this approach does not work:</p>
 
-- 1: In each iteration of this loop, a shared queue is maintained. The concurrent update of this queue need to be protected by lock (or atomic operations).
-- 2: The task for each worker thread is not computation intensive. It only involes a few calculations, and then updates the shared data structure.
-- 3: The overhead of creating/destroying threads.
+- 1:  In each iteration of this loop, a shared queue is maintained. The concurrent update of this queue need to be protected by lock (or atomic operations).
+- 2:  The task for each worker thread is not computation intensive. It only involes a few calculations, and then updates the shared data structure.
+- 3:  The overhead of creating/destroying threads.
 
 <p align="justify">&emsp;&emsp;To overcome these issues, we tried many ways to optimize it. We keep buffer to accumulate local updates, and try to use as few locks as possible. We maintain a pool of threads to avoid creating threads on the fly. However, the improvement is not satisfying. This situation is similar for OpenMP implementation.</p>
 
 ## Way to final parallelism
 <p align="justify">&emsp;&emsp; After our first try, we found out that trivially parallizing parts of this serial algorithm can not achieve good speedup. Our next idea is to partition the input mesh to independent pieces. Each piece will be processed by one worker thread, and all pieces will be stitched at the end. In this way, the update in each piece can be separated and no global data structure need to be frequently updated. The challenge will be how to partition the input mesh evenly and stitch pieces together.</p>
 <p align="justify">&emsp;&emsp; One way to partition the mesh is to do bread first search, starting from a random vertex. All neighbor vertices will be added to current piece, until a threshold is reached. Then a new piece will be starting from the boarder. In this way, the partition of vertices and triangles can be done evenly, and different pieces are disjoint.</p>
+<p align="justify">&emsp;&emsp; </p>
