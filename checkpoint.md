@@ -45,6 +45,7 @@
   | 0.01  | 319.221629s  | 45.2114%               | 7.039001                | ![](image/Lucy1_1.png) |
   | 0.001 | 331.384197s  | 43.2649%               | 7.037734                | ![](image/Lucy2_1.png) |
   
+<p align="justify">&emsp;&emsp;We can see from the experiments that when the size of model is large, it takes long time for the mesh simplification algorithm to complete. That's why we need parallelism to speedup it. Another thing to notice is that the potential parallel part in this algorithm is just about 50% and the concurrent task number is no more than 8. As a result, we must use another method to speedup. That is, divide the tasks evenly, and hopefully each process can do the tasks independently. We will discuss about the parallism algorithm in the following sections.</p>
 
 ## Current Issues
 
