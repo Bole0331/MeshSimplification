@@ -4,3 +4,15 @@
 - Haixin Liu (haixinl@andrew.cmu.edu)
 
 ## [Proposal](./index)
+
+## Updated Schedule
+
+## Works completed so far
+
+## preliminary results
+
+## Current Issues
+
+## First try to parallelism
+
+## Way to final parallelism
