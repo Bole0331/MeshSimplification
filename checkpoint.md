@@ -25,6 +25,7 @@
   | 0.1   | 7.730236s    | 53.5701%               | 7.134595                | ![](image/Bunny0_1.png) |
   | 0.01  | 8.696549s    | 52.3328%               | 7.115745                | ![](image/Bunny1_1.png) |
   
+  
 - Stanford Dragon: 54,855 vertices, 109,227 triangles
 
   | Ratio | Running time | Percentage of Parallel | Concurrent tasks number | picture                  |
@@ -34,7 +35,15 @@
   | 0.1   | 10.64453s    | 53.8220%               | 6.873644                | ![](image/Dragon0_1.png) |
   | 0.01  | 12.40377s    | 52.6605%               | 6.874545                | ![](image/Dragon1_1.png) |
 
+
 - Stanford Lucy: 1,002,540 vertices, 2,005,076 triangles
+
+  | Ratio | Running time | Percentage of Parallel | Concurrent tasks number | picture                |
+  | :---: | :----------: | :--------------------: | :---------------------: | :--------------------: |
+  | 0.2   | 227.477330s  | 48.4608%               | 7.060837                | ![](image/Lucy0_2.png) |
+  | 0.1   | 277.754340s  | 44.7244%               | 7.050373                | ![](image/Lucy0_1.png) |
+  | 0.01  | 12.40377s    | 52.6605%               | 6.874545                | ![](image/Lucy1_1.png) |
+  
 
 ## Current Issues
 
@@ -50,3 +59,5 @@
 <p align="justify">&emsp;&emsp;To overcome these issues, we tried many ways to optimize it. We keep buffer to accumulate local updates, and try to use as few locks as possible. We maintain a pool of threads to avoid creating threads on the fly. However, the improvement is not satisfying. This situation is similar for OpenMP implementation.</p>
 
 ## Way to final parallelism
+<p align="justify">&emsp;&emsp; After our first try, we found out that trivially parallizing parts of this serial algorithm can not achieve good speedup. Our next idea is to partition the input mesh to independent pieces. Each piece will be processed by one worker thread, and all pieces will be stitched at the end. In this way, the update in each piece can be separated and no global data structure need to be frequently updated. The challenge will be how to partition the input mesh evenly and stitch pieces together.</p>
+<p align="justify">&emsp;&emsp; One way to partition the mesh is to do bread first search, starting from a random vertex. All neighbor vertices will be added to current piece, until a threshold is reached. Then a new piece will be starting from the boarder. In this way, the partition of vertices and triangles can be done evenly, and different pieces are disjoint.</p>
