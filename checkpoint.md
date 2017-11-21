@@ -49,6 +49,7 @@
 <p align="justify">&emsp;&emsp;We can see from the experiments that when the size of model is large, it takes long time for the mesh simplification algorithm to complete. That's why we need parallelism to speedup it. Another thing to notice is that the potential parallel part in this algorithm is just about 50% and the concurrent task number is no more than 8. As a result, we must use another method to speedup. That is, divide the tasks evenly, and hopefully each process can do the tasks independently. We will discuss about the parallism algorithm in the following sections.</p>
 
 ## Current Issues
+<p align="justify">&emsp;&emsp; The current unknown for us is how to partition the mesh and join together after processing. One of the papers we studied uses greedy BFS approach to produce even partitions. It uses MPI to parallel the algorithm, and manages the boarder problem with communications. However, the details of this algorithm is not clearly described in this paper. We need to find out how to partition input mesh and rejoin the partitions by ourselves.</p>
 
 ## First try to parallelism
 <p align="justify">&emsp;&emsp; Our first try to parallelize the problem is to identify the independent loops within the serial algorithm. These loops can be distributed to many workers in a shared address space fashion. Common implementations include OpenMp and Pthread library. We implemented this parallel algorithm in both of these two ways.</p>
