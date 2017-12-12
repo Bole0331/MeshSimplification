@@ -4,6 +4,7 @@
 - Haixin Liu (haixinl@andrew.cmu.edu)
 
 ## [CheckPoint](./checkpoint)
+## [Final Report](./ProjectReport.pdf)
 
 ## Summary
 
